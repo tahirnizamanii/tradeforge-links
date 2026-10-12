@@ -10,17 +10,19 @@
   :root { --navy: #1B2A41; --gold: #B8923D; --cream: #F7F4EC; --green: #6B7A4F; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
-  .hero { background: var(--navy); color: #fff; text-align: center; padding: 3rem 1.25rem 2.5rem; }
-  .hero h1 { font-size: 2rem; line-height: 1.25; margin-bottom: .75rem; }
+  .hero { background: var(--navy); color: #fff; text-align: center; padding: 2.5rem 1.25rem 2rem; }
+  .hero h1 { font-size: 1.7rem; line-height: 1.3; margin-bottom: .6rem; }
   .hero h1 .gold { color: var(--gold); }
-  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto; }
-  .container { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; }
-  .card { background: #fff; border: 1px solid #e8e2d4; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.25rem; }
-  .card .tag { display: inline-block; background: #eef2e6; color: var(--green); font-weight: 700; font-size: .75rem; padding: .3rem .8rem; border-radius: 999px; margin-bottom: .75rem; text-transform: uppercase; letter-spacing: .05em; }
-  .card h2 { font-size: 1.35rem; margin-bottom: .5rem; }
-  .card p { opacity: .8; margin-bottom: 1rem; }
-  .card a { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 800; padding: .85rem 1.6rem; border-radius: .75rem; text-decoration: none; }
-  .promise { background: #fff; border: 1px solid #e8e2d4; border-radius: 1rem; padding: 1.5rem; margin: 2rem 0 1rem; }
+  .hero p { opacity: .85; font-size: 1rem; max-width: 34rem; margin: 0 auto; }
+  .container { max-width: 64rem; margin: 0 auto; padding: 1.75rem 1rem; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; }
+  @media (min-width: 56rem) { .grid { grid-template-columns: repeat(4, 1fr); gap: 1.1rem; } }
+  .card { background: #fff; border: 1px solid #e8e2d4; border-radius: .9rem; padding: 1.1rem; display: flex; flex-direction: column; }
+  .card .tag { display: inline-block; align-self: flex-start; background: #eef2e6; color: var(--green); font-weight: 700; font-size: .68rem; padding: .25rem .7rem; border-radius: 999px; margin-bottom: .6rem; text-transform: uppercase; letter-spacing: .05em; }
+  .card h2 { font-size: 1.02rem; line-height: 1.35; margin-bottom: .4rem; }
+  .card p { opacity: .78; font-size: .85rem; margin-bottom: .9rem; flex: 1; }
+  .card a { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: .88rem; padding: .7rem .5rem; border-radius: .6rem; text-decoration: none; }
+  .promise { background: #fff; border: 1px solid #e8e2d4; border-radius: 1rem; padding: 1.5rem; margin: 1.75rem auto 0; max-width: 40rem; }
   .promise h2 { font-size: 1.1rem; margin-bottom: .5rem; }
   .promise p { opacity: .8; font-size: .95rem; }
   footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2.5rem; max-width: 40rem; margin: 0 auto; }
@@ -35,32 +37,34 @@
 
 <main class="container">
 
-  <div class="card">
-    <span class="tag">Focus</span>
-    <h2>The Genius Wave</h2>
-    <p>A 7-minute morning audio ritual I used for 30 days to get into deep-focus mode faster. Simple, no habit overhaul required.</p>
-    <a href="/genius-wave/">Read my 30-day test →</a>
-  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Focus</span>
+      <h2>The Genius Wave</h2>
+      <p>7-minute morning audio ritual for deeper focus.</p>
+      <a href="/genius-wave/">My 30-day test →</a>
+    </div>
 
-  <div class="card">
-    <span class="tag">Sleep</span>
-    <h2>YU Sleep</h2>
-    <p>The nightly formula that ended my 3 AM wake-ups. Better sleep did more for my productivity than any planner ever did.</p>
-    <a href="/yu-sleep/">How I fixed my sleep →</a>
-  </div>
+    <div class="card">
+      <span class="tag">Sleep</span>
+      <h2>YU Sleep</h2>
+      <p>Fall asleep faster, stay asleep, wake up sharp.</p>
+      <a href="/yu-sleep/">How I fixed my sleep →</a>
+    </div>
 
-  <div class="card">
-    <span class="tag">Home Comfort</span>
-    <h2>Ultra Air Cooler</h2>
-    <p>A portable personal cooler for your desk or nightstand — cold air where you actually sit, without running the AC all day.</p>
-    <a href="/ultra-air-cooler/">See how it works →</a>
-  </div>
+    <div class="card">
+      <span class="tag">Home Comfort</span>
+      <h2>Ultra Air Cooler</h2>
+      <p>Personal cooling for your desk or nightstand.</p>
+      <a href="/ultra-air-cooler/">See how it works →</a>
+    </div>
 
-  <div class="card">
-    <span class="tag">Study</span>
-    <h2>The Brain Song</h2>
-    <p>A 7-minute audio track I now play at the start of every study session — it became my brain's "time to focus" cue.</p>
-    <a href="/brain-song/">Read my 2-week test →</a>
+    <div class="card">
+      <span class="tag">Study</span>
+      <h2>The Brain Song</h2>
+      <p>7-minute audio to kick off focused study sessions.</p>
+      <a href="/brain-song/">My 2-week test →</a>
+    </div>
   </div>
 
   <div class="promise">
