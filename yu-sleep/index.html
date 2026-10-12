@@ -4,72 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>YU Sleep — The Unsexy Productivity Hack: Better Sleep</title>
-<meta name="description" content="I fixed my 3 AM wake-ups and my deep work doubled. Here's what YU Sleep is and how to try it yourself.">
+<title>YU Sleep — How I Fixed My 3 AM Wake-Ups</title>
+<meta name="description" content="I used to wake up at 3 AM every night. Fixing my sleep doubled my deep work. Here's the nightly formula I landed on: YU Sleep.">
 <style>
   :root { --navy: #1B2A41; --gold: #B8923D; --cream: #F7F4EC; --green: #6B7A4F; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.65; padding-bottom: 4.5rem; }
   .hero { background: var(--navy); color: #fff; text-align: center; padding: 3rem 1.25rem 2.5rem; }
   .badge { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: .8rem; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .05em; }
-  .hero h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: .75rem; }
+  .hero h1 { font-size: 1.85rem; line-height: 1.3; margin-bottom: .75rem; }
   .hero h1 .gold { color: var(--gold); }
-  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto; }
-  .container { max-width: 34rem; margin: 0 auto; padding: 2rem 1.25rem; }
-  .benefits { list-style: none; margin: 1.5rem 0; }
+  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto 1.5rem; }
+  .container { max-width: 36rem; margin: 0 auto; padding: 2rem 1.25rem; }
+  .container h2 { font-size: 1.4rem; margin: 2.25rem 0 1rem; }
+  .container p { margin-bottom: 1rem; }
+  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.5rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
+  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
+  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1rem; }
+  .pain { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem 1.25rem 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .pain li { margin-bottom: .5rem; }
+  .benefits { list-style: none; margin: 1.25rem 0; }
   .benefits li { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .8rem; display: flex; gap: .8rem; align-items: flex-start; }
   .benefits .check { color: var(--green); font-weight: 800; font-size: 1.2rem; line-height: 1.4; }
-  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.75rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
-  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
-  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1.5rem; }
-  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
-  .steps h2 { font-size: 1.05rem; margin-bottom: .75rem; }
+  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1rem; }
   .steps ol { padding-left: 1.25rem; }
   .steps li { margin-bottom: .5rem; }
-  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2.5rem; }
-  footer a { color: var(--navy); }
+  .faq details { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .7rem; }
+  .faq summary { font-weight: 700; cursor: pointer; }
+  .faq p { font-size: .95rem; opacity: .85; margin: .5rem 0 0; }
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); text-align: center; z-index: 50; }
+  .sticky-cta a { display: block; background: var(--gold); color: var(--navy); font-weight: 800; padding: .85rem; border-radius: .6rem; text-decoration: none; }
+  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2rem; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <span class="badge">Sleep = Productivity</span>
-  <h1>The Unsexy Productivity Hack: <span class="gold">Actually Sleeping Through the Night</span></h1>
-  <p>I used to wake up at 3 AM and stare at the ceiling. Fixing my sleep did more for my focus than any planner ever did. YU Sleep is the nightly formula I landed on.</p>
+  <span class="badge">Sleep = productivity</span>
+  <h1>I Fixed My 3 AM Wake-Ups — and My Workdays <span class="gold">Doubled</span></h1>
+  <p>For months I woke up at 3 AM and stared at the ceiling. Fixing my sleep did more for my focus than any planner, app, or system ever did. Here's the nightly formula I landed on.</p>
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener" style="max-width:22rem;margin:0 auto;">Try YU Sleep<small>Official site — secure checkout</small></a>
 </header>
 
 <main class="container">
+
+  <h2>Sound familiar?</h2>
+  <ul class="pain">
+    <li>You fall asleep fine, then snap awake at 2–3 AM with your mind racing</li>
+    <li>Mornings feel groggy no matter how early you went to bed</li>
+    <li>Coffee gets you to noon, then you crash — and the cycle repeats</li>
+  </ul>
+  <p>I tried everything: no screens after 10, magnesium, white noise, "just relax." What finally worked was a simple nightly supplement routine — and YU Sleep is the formula that stuck.</p>
+
+  <h2>What it actually is</h2>
+  <p>YU Sleep is a nightly supplement blend formulated to support calm, uninterrupted sleep. You take it about 30 minutes before bed. No prescription, no morning grogginess, no complicated sleep protocol.</p>
+
   <ul class="benefits">
-    <li><span class="check">✓</span><span><strong>Fall asleep faster, stay asleep</strong> — a nightly blend formulated to support calm, uninterrupted sleep without morning grogginess.</span></li>
-    <li><span class="check">✓</span><span><strong>Wake up clear</strong> — deeper sleep means sharper mornings. My deep-work sessions genuinely doubled once the 3 AM wake-ups stopped.</span></li>
-    <li><span class="check">✓</span><span><strong>60-day guarantee</strong> — try it for two full months; if your sleep doesn't improve, you're covered.</span></li>
+    <li><span class="check">✓</span><span><strong>Fall asleep faster</strong> — a calmer wind-down instead of an hour of tossing and scrolling.</span></li>
+    <li><span class="check">✓</span><span><strong>Stay asleep through the night</strong> — this was the big one for me. The 3 AM wake-ups stopped within the first two weeks.</span></li>
+    <li><span class="check">✓</span><span><strong>Wake up clear, not groggy</strong> — deeper sleep means sharper mornings. My deep-work sessions genuinely doubled.</span></li>
+    <li><span class="check">✓</span><span><strong>60-day guarantee</strong> — two full months to decide. If your sleep doesn't improve, you're covered.</span></li>
   </ul>
 
-  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">
-    Try YU Sleep
-    <small>Official site — secure checkout</small>
-  </a>
-  <p class="note">Supplements support sleep; they aren't medical treatment. Check with your doctor if you take medication.</p>
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Sleep Through the Night Again<small>Official site — 60-day guarantee</small></a>
+  <p class="note">Supplements support sleep; they aren't medical treatment. Talk to your doctor first if you take medication.</p>
 
+  <h2>How it works</h2>
   <div class="steps">
-    <h2>How it works</h2>
     <ol>
-      <li>Tap the button above to visit the official page</li>
+      <li>Tap the button to visit the official page</li>
       <li>Choose your supply and check out securely</li>
-      <li>Take it nightly about 30 minutes before bed</li>
+      <li>Take it nightly, about 30 minutes before bed — then let it do its thing</li>
     </ol>
   </div>
+
+  <h2>Quick answers</h2>
+  <div class="faq">
+    <details><summary>Will it make me groggy in the morning?</summary><p>That was my biggest worry too. In my experience: no — I woke up clearer than before, because I was actually sleeping through the night.</p></details>
+    <details><summary>Is it habit-forming?</summary><p>It's a natural-ingredient nightly blend, not a prescription sleep drug. I use it as part of a wind-down routine, not a crutch.</p></details>
+    <details><summary>What if it doesn't work for me?</summary><p>60-day money-back guarantee. Try it for several weeks; if your sleep doesn't improve, get your money back.</p></details>
+  </div>
+
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Try YU Sleep Today<small>Official site — secure checkout</small></a>
+
 </main>
+
+<div class="sticky-cta"><a href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Try YU Sleep →</a></div>
 
 <footer>
   <p>Affiliate disclosure: I'm an affiliate for this product. If you buy through my link, I may earn a commission at no extra cost to you. I only recommend things I've personally tried.</p>
 </footer>
-
-<script>
-  document.querySelector('.cta').addEventListener('click', function() {
-    console.log('cta_click', window.location.pathname);
-  });
-</script>
 
 </body>
 </html>
