@@ -4,72 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Ultra Air Cooler — Beat the Heat Without the AC Bill</title>
-<meta name="description" content="A portable personal air cooler for your desk or nightstand. Cools your space without running the AC all day.">
+<title>Ultra Air Cooler — Cool Air Where You Sit</title>
+<meta name="description" content="A portable personal air cooler for your desk or nightstand. Cold air where you actually sit — without running the AC all day.">
 <style>
   :root { --navy: #1B2A41; --gold: #B8923D; --cream: #F7F4EC; --green: #6B7A4F; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.65; padding-bottom: 4.5rem; }
   .hero { background: var(--navy); color: #fff; text-align: center; padding: 3rem 1.25rem 2.5rem; }
   .badge { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: .8rem; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .05em; }
-  .hero h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: .75rem; }
+  .hero h1 { font-size: 1.85rem; line-height: 1.3; margin-bottom: .75rem; }
   .hero h1 .gold { color: var(--gold); }
-  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto; }
-  .container { max-width: 34rem; margin: 0 auto; padding: 2rem 1.25rem; }
-  .benefits { list-style: none; margin: 1.5rem 0; }
+  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto 1.5rem; }
+  .container { max-width: 36rem; margin: 0 auto; padding: 2rem 1.25rem; }
+  .container h2 { font-size: 1.4rem; margin: 2.25rem 0 1rem; }
+  .container p { margin-bottom: 1rem; }
+  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.5rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
+  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
+  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1rem; }
+  .pain { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem 1.25rem 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .pain li { margin-bottom: .5rem; }
+  .benefits { list-style: none; margin: 1.25rem 0; }
   .benefits li { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .8rem; display: flex; gap: .8rem; align-items: flex-start; }
   .benefits .check { color: var(--green); font-weight: 800; font-size: 1.2rem; line-height: 1.4; }
-  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.75rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
-  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
-  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1.5rem; }
-  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
-  .steps h2 { font-size: 1.05rem; margin-bottom: .75rem; }
+  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1rem; }
   .steps ol { padding-left: 1.25rem; }
   .steps li { margin-bottom: .5rem; }
-  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2.5rem; }
-  footer a { color: var(--navy); }
+  .faq details { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .7rem; }
+  .faq summary { font-weight: 700; cursor: pointer; }
+  .faq p { font-size: .95rem; opacity: .85; margin: .5rem 0 0; }
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); text-align: center; z-index: 50; }
+  .sticky-cta a { display: block; background: var(--gold); color: var(--navy); font-weight: 800; padding: .85rem; border-radius: .6rem; text-decoration: none; }
+  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2rem; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <span class="badge">Home Comfort Pick</span>
-  <h1>Cool Your Space <span class="gold">Without Running the AC All Day</span></h1>
-  <p>Ultra Air Cooler is a portable personal cooler for your desk, nightstand, or couch corner — cold air where you actually sit, without cooling the whole house.</p>
+  <span class="badge">Home comfort pick</span>
+  <h1>Cool Air <span class="gold">Where You Sit</span> — Without the AC Bill</h1>
+  <p>Ultra Air Cooler is a portable personal cooler for your desk, nightstand, or couch corner. Cold air where you actually are — not the whole house.</p>
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener" style="max-width:22rem;margin:0 auto;">Get Ultra Air Cooler<small>Official site — secure checkout</small></a>
 </header>
 
 <main class="container">
+
+  <h2>Sound familiar?</h2>
+  <ul class="pain">
+    <li>Your home office turns into an oven by 2 PM, but the rest of the house is fine</li>
+    <li>Running the AC all day just to cool one room feels like burning money</li>
+    <li>Fans just push hot air around — they don't actually cool anything</li>
+  </ul>
+  <p>Central AC cools the whole house when you only need one corner cool. That's the gap a personal cooler fills: targeted cold air, a fraction of the energy.</p>
+
+  <h2>What it actually is</h2>
+  <p>Ultra Air Cooler is a compact evaporative cooler — you fill it with water, plug it in, and it blows cooled, slightly humidified air at your personal space. Desk, nightstand, couch side table: wherever you sit, that's where the cool air goes.</p>
+
   <ul class="benefits">
-    <li><span class="check">✓</span><span><strong>Personal cooling zone</strong> — sits on your desk or nightstand and blows cool air right where you are.</span></li>
-    <li><span class="check">✓</span><span><strong>Easy on the power bill</strong> — uses a fraction of the energy of central AC. Just add water, plug in, done.</span></li>
-    <li><span class="check">✓</span><span><strong>Portable</strong> — light enough to move from office to bedroom. Multi-unit bundles bring the per-unit price down.</span></li>
+    <li><span class="check">✓</span><span><strong>Your own cooling zone</strong> — sits on a desk or nightstand and blows cool air right at you, not the empty hallway.</span></li>
+    <li><span class="check">✓</span><span><strong>Easy on the power bill</strong> — uses a fraction of the energy of central AC. Fill with water, plug in, done.</span></li>
+    <li><span class="check">✓</span><span><strong>Portable</strong> — light enough to carry from office to bedroom. Multi-unit bundles bring the per-unit price down.</span></li>
+    <li><span class="check">✓</span><span><strong>Doubles as a humidifier</strong> — evaporative cooling adds a little moisture to dry, air-conditioned air.</span></li>
   </ul>
 
-  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">
-    Get Ultra Air Cooler
-    <small>Official site — secure checkout</small>
-  </a>
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Cool Your Space Now<small>Official site — bundle discounts available</small></a>
   <p class="note">A personal cooler for your immediate space — it's not a replacement for whole-home AC.</p>
 
+  <h2>How it works</h2>
   <div class="steps">
-    <h2>How it works</h2>
     <ol>
-      <li>Tap the button above to visit the official page</li>
-      <li>Pick 1, 2, or 3 units (bundles save per unit)</li>
+      <li>Tap the button to visit the official page</li>
+      <li>Pick 1, 2, or 3 units — bundles save per unit</li>
       <li>Fill with water, plug in, enjoy the cool air</li>
     </ol>
   </div>
+
+  <h2>Quick answers</h2>
+  <div class="faq">
+    <details><summary>Will it cool my whole room?</summary><p>No — and that's the point. It's a <em>personal</em> cooler: it cools the air immediately around you (desk, bed, couch). For whole-room cooling you still want AC or a larger unit.</p></details>
+    <details><summary>How often do I refill the water?</summary><p>Depends on fan speed and room dryness — typically every few hours of use. Topping it up becomes second nature, like a water bottle.</p></details>
+    <details><summary>Is it noisy?</summary><p>It's a small fan — there's a gentle hum, quieter than most desk fans on low/medium. Most people sleep fine with it on the nightstand.</p></details>
+  </div>
+
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Get Ultra Air Cooler Today<small>Official site — secure checkout</small></a>
+
 </main>
+
+<div class="sticky-cta"><a href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Get Ultra Air Cooler →</a></div>
 
 <footer>
   <p>Affiliate disclosure: I'm an affiliate for this product. If you buy through my link, I may earn a commission at no extra cost to you. I only recommend things I've personally tried.</p>
 </footer>
-
-<script>
-  document.querySelector('.cta').addEventListener('click', function() {
-    console.log('cta_click', window.location.pathname);
-  });
-</script>
 
 </body>
 </html>
