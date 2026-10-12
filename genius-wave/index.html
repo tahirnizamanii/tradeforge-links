@@ -5,71 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>The Genius Wave — My 30-Day Focus Ritual Test</title>
-<meta name="description" content="I tested The Genius Wave 7-minute daily audio ritual for 30 days. Here's my honest experience and how to try it yourself.">
+<meta name="description" content="I listened to The Genius Wave 7-minute audio every morning for 30 days. Here's what changed, what didn't, and whether it's worth trying.">
 <style>
   :root { --navy: #1B2A41; --gold: #B8923D; --cream: #F7F4EC; --green: #6B7A4F; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.65; padding-bottom: 4.5rem; }
   .hero { background: var(--navy); color: #fff; text-align: center; padding: 3rem 1.25rem 2.5rem; }
   .badge { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; font-size: .8rem; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .05em; }
-  .hero h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: .75rem; }
+  .hero h1 { font-size: 1.85rem; line-height: 1.3; margin-bottom: .75rem; }
   .hero h1 .gold { color: var(--gold); }
-  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto; }
-  .container { max-width: 34rem; margin: 0 auto; padding: 2rem 1.25rem; }
-  .benefits { list-style: none; margin: 1.5rem 0; }
+  .hero p { opacity: .85; font-size: 1.05rem; max-width: 34rem; margin: 0 auto 1.5rem; }
+  .container { max-width: 36rem; margin: 0 auto; padding: 2rem 1.25rem; }
+  .container h2 { font-size: 1.4rem; margin: 2.25rem 0 1rem; }
+  .container p { margin-bottom: 1rem; }
+  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.5rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
+  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
+  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1rem; }
+  .pain { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem 1.25rem 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .pain li { margin-bottom: .5rem; }
+  .benefits { list-style: none; margin: 1.25rem 0; }
   .benefits li { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .8rem; display: flex; gap: .8rem; align-items: flex-start; }
   .benefits .check { color: var(--green); font-weight: 800; font-size: 1.2rem; line-height: 1.4; }
-  .cta { display: block; text-align: center; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 1.15rem; padding: 1.1rem; border-radius: .75rem; text-decoration: none; margin: 1.75rem 0 .75rem; box-shadow: 0 4px 14px rgba(184,146,61,.35); }
-  .cta small { display: block; font-weight: 600; font-size: .8rem; opacity: .75; margin-top: .25rem; }
-  .note { text-align: center; font-size: .85rem; opacity: .65; margin-bottom: 1.5rem; }
-  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
-  .steps h2 { font-size: 1.05rem; margin-bottom: .75rem; }
+  .diary { background: #fff; border-left: 4px solid var(--gold); border-radius: 0 .75rem .75rem 0; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+  .diary strong { display: block; margin-bottom: .25rem; }
+  .diary p { font-size: .95rem; opacity: .85; margin: 0; }
+  .steps { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1.25rem; margin-bottom: 1rem; }
   .steps ol { padding-left: 1.25rem; }
   .steps li { margin-bottom: .5rem; }
-  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2.5rem; }
-  footer a { color: var(--navy); }
+  .faq details { background: #fff; border: 1px solid #e8e2d4; border-radius: .75rem; padding: 1rem 1.1rem; margin-bottom: .7rem; }
+  .faq summary { font-weight: 700; cursor: pointer; }
+  .faq p { font-size: .95rem; opacity: .85; margin: .5rem 0 0; }
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); text-align: center; z-index: 50; }
+  .sticky-cta a { display: block; background: var(--gold); color: var(--navy); font-weight: 800; padding: .85rem; border-radius: .6rem; text-decoration: none; }
+  footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2rem; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <span class="badge">Personal Test — 30 Days</span>
-  <h1>I Tried a <span class="gold">7-Minute Daily Focus Ritual</span> for 30 Days</h1>
-  <p>The Genius Wave is a short daily audio session designed to help you settle into deep-focus mode. Here's my honest experience — and how to try it yourself.</p>
+  <span class="badge">My 30-day test</span>
+  <h1>The 7-Minute Morning Ritual That Fixed My <span class="gold">Scattered Focus</span></h1>
+  <p>I listened to The Genius Wave every morning for 30 days. Here's what changed, what didn't — and whether it's worth your 7 minutes.</p>
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener" style="max-width:22rem;margin:0 auto;">Try The Genius Wave<small>Official site — secure checkout</small></a>
 </header>
 
 <main class="container">
+
+  <h2>Sound familiar?</h2>
+  <ul class="pain">
+    <li>You sit down to work and somehow end up 20 minutes deep in your phone</li>
+    <li>You start five tasks, finish none, and feel busy all day</li>
+    <li>By 2 PM your brain feels like TV static</li>
+  </ul>
+  <p>That was me, every day. Planners helped me <em>organize</em> the chaos, but nothing helped me actually <em>settle into</em> deep work — until I tried starting my mornings with this 7-minute audio session.</p>
+
+  <h2>What it actually is</h2>
+  <p>The Genius Wave is a short daily audio track built around layered sound frequencies. You put on headphones, press play, and listen for 7 minutes — that's the whole protocol. No course to finish, no 5 AM club, no habit overhaul.</p>
+
   <ul class="benefits">
-    <li><span class="check">✓</span><span><strong>Just 7 minutes a day</strong> — I listened each morning with headphones before starting work. No courses, no homework, no habit overhaul.</span></li>
-    <li><span class="check">✓</span><span><strong>Built for busy minds</strong> — the audio uses layered sound frequencies meant to help your brain shift into a calm, focused state.</span></li>
-    <li><span class="check">✓</span><span><strong>Risk-free to try</strong> — it comes with a money-back guarantee, so if it doesn't click for you, you're covered.</span></li>
+    <li><span class="check">✓</span><span><strong>Only 7 minutes</strong> — shorter than making coffee. I did it while my tea brewed.</span></li>
+    <li><span class="check">✓</span><span><strong>A clear "start work" cue</strong> — after two weeks, pressing play became the signal my brain associated with focus time.</span></li>
+    <li><span class="check">✓</span><span><strong>Nothing to learn or maintain</strong> — no journaling system, no app streaks, no subscriptions to manage.</span></li>
+    <li><span class="check">✓</span><span><strong>Risk-free to try</strong> — it comes with a money-back guarantee, so the downside is basically zero.</span></li>
   </ul>
 
-  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">
-    Try The Genius Wave
-    <small>Official site — secure checkout</small>
-  </a>
+  <h2>My 30-day notes (honest version)</h2>
+  <div class="diary"><strong>Week 1</strong><p>Felt like nothing was happening. I almost quit. Kept going because it was only 7 minutes.</p></div>
+  <div class="diary"><strong>Weeks 2–3</strong><p>Noticed I was reaching for my phone less during the first work block. Mornings felt calmer — less of that frantic "where do I start" feeling.</p></div>
+  <div class="diary"><strong>Week 4</strong><p>The ritual itself became the win: a fixed, calm start to the day. My deep-work sessions got longer. Did it make me a genius? No. Did it make focusing <em>easier</em>? Yes.</p></div>
+
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Start Your 7-Minute Ritual<small>Official site — secure checkout</small></a>
   <p class="note">My experience is personal — results vary. This is a focus ritual, not a magic wealth button.</p>
 
+  <h2>How it works</h2>
   <div class="steps">
-    <h2>How it works</h2>
     <ol>
-      <li>Tap the button above to visit the official page</li>
+      <li>Tap the button to visit the official page</li>
       <li>Download the 7-minute audio session</li>
-      <li>Listen daily with headphones — mornings worked best for me</li>
+      <li>Listen each morning with headphones — then start work</li>
     </ol>
   </div>
+
+  <h2>Quick answers</h2>
+  <div class="faq">
+    <details><summary>Is this some kind of medical treatment?</summary><p>No. It's an audio relaxation/focus aid — closer to meditation music than medicine. It doesn't diagnose or treat anything.</p></details>
+    <details><summary>How fast will I notice anything?</summary><p>Honestly? Give it at least 2 weeks of daily listening. Week 1 felt like nothing for me.</p></details>
+    <details><summary>What if it doesn't work for me?</summary><p>That's what the money-back guarantee is for. Try it daily for a few weeks; if it's not for you, you're covered.</p></details>
+  </div>
+
+  <a class="cta" href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Try The Genius Wave Today<small>Official site — money-back guarantee</small></a>
+
 </main>
+
+<div class="sticky-cta"><a href="{{OFFER_URL}}" rel="nofollow sponsored noopener">Try The Genius Wave →</a></div>
 
 <footer>
   <p>Affiliate disclosure: I'm an affiliate for this product. If you buy through my link, I may earn a commission at no extra cost to you. I only recommend things I've personally tried.</p>
 </footer>
-
-<script>
-  document.querySelector('.cta').addEventListener('click', function() {
-    console.log('cta_click', window.location.pathname);
-  });
-</script>
 
 </body>
 </html>
