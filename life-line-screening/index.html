@@ -37,7 +37,7 @@
   footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2rem; }
 </style>
 </head>
-<body>
+<body data-tf-slug="life-line-screening">
 
 <header class="hero">
   <span class="badge">Preventive health pick</span>
@@ -45,6 +45,121 @@
   <p>Life Line Screening provides painless, non-invasive preventive screenings for stroke, cardiovascular disease, and more — at local events near you. Here's the honest breakdown.</p>
   <a class="cta" href="https://noklnk.com/x/6043994?subid1=tradeforge" rel="nofollow sponsored noopener" style="max-width:22rem;margin:0 auto;">Find a Screening Near You<small>Official site — check availability</small></a>
 </header>
+
+  <style>
+    .quiz-wrap { max-width: 36rem; margin: 0 auto; padding: 0 1.25rem; }
+    .quiz-card { background: #fff; border: 1px solid #e8e2d4; border-radius: 1rem; padding: 1.5rem 1.25rem; margin: 2rem 0; box-shadow: 0 6px 24px rgba(27,42,65,.08); }
+    .quiz-card h3 { font-size: 1.35rem; color: var(--navy); margin: 0 0 .25rem; text-align: center; }
+    .quiz-card .quiz-sub { text-align: center; font-size: .95rem; opacity: .7; margin: 0 0 1rem; }
+    .quiz-progress { display: flex; justify-content: center; gap: .5rem; margin-bottom: 1.25rem; }
+    .quiz-dot { width: .65rem; height: .65rem; border-radius: 999px; background: #e8e2d4; transition: background .25s; }
+    .quiz-dot.active { background: var(--gold); }
+    .quiz-card .quiz-q { font-size: 1.1rem; font-weight: 700; margin: 0 0 .35rem; text-align: center; color: var(--navy); }
+    .quiz-card .quiz-hint { text-align: center; font-size: .88rem; opacity: .65; margin: 0 0 1rem; }
+    .quiz-opts { display: flex; flex-direction: column; gap: .6rem; }
+    .quiz-opt { display: block; width: 100%; text-align: left; background: var(--cream); border: 2px solid #e8e2d4; border-radius: .65rem; padding: .9rem 1rem; font-size: 1rem; font-weight: 600; color: var(--navy); cursor: pointer; font-family: inherit; transition: border-color .2s, background .2s; }
+    .quiz-opt:hover { border-color: var(--gold); }
+    .quiz-opt.selected { border-color: var(--gold); background: #fdf6e3; }
+    .quiz-step { animation: quizFade .3s ease; }
+    @keyframes quizFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .quiz-next { display: block; width: 100%; margin-top: 1rem; background: var(--navy); color: #fff; font-weight: 700; font-size: 1.05rem; padding: .95rem; border: none; border-radius: .65rem; cursor: pointer; font-family: inherit; }
+    .quiz-card .quiz-result h4 { font-size: 1.25rem; margin: 0 0 .75rem; color: var(--navy); }
+    .quiz-card .quiz-result p { margin: 0 0 1rem; font-size: 1rem; }
+    .quiz-factors { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem; }
+    .quiz-factors li { background: var(--cream); border: 1px solid #e8e2d4; border-radius: 999px; padding: .3rem .8rem; font-size: .85rem; font-weight: 600; }
+    .quiz-card .quiz-disclaimer { font-size: .78rem; opacity: .6; text-align: center; margin: 1rem 0 0; }
+    .quiz-restart { display: block; margin: .75rem auto 0; font-size: .9rem; color: var(--navy); opacity: .7; background: none; border: none; cursor: pointer; text-decoration: underline; font-family: inherit; }
+  </style>
+  <div class="quiz-wrap">
+    <section class="quiz-card" id="riskQuiz" aria-label="Health Risk Check">
+      <h3>Health Risk Check</h3>
+      <p class="quiz-sub">3 quick questions &mdash; see where you stand.</p>
+      <div class="quiz-progress" id="rqProgress"></div>
+      <div id="rqBody"></div>
+      <p class="quiz-disclaimer">This check is for information only and isn&rsquo;t medical advice. Talk to your doctor about what&rsquo;s right for you.</p>
+    </section>
+  </div>
+  <script>
+  (function(){
+    var AFF = "https://noklnk.com/x/6043994?subid1=tradeforge";
+    var body = document.getElementById('rqBody');
+    var prog = document.getElementById('rqProgress');
+    if(!body || !prog) return;
+    var FACTORS = ["High blood pressure","High cholesterol","Family history of stroke or heart disease","Smoker"];
+    var step = 0;
+    var ans = { age: null, factors: [], last: null };
+    function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+    function dots(){ var h=""; for(var i=0;i<3;i++) h+='<span class="quiz-dot'+(i<=step?" active":"")+'"></span>'; prog.innerHTML=h; }
+    function optButtons(list, cls){
+      var h = '<div class="quiz-opts">';
+      list.forEach(function(o,i){ h += '<button type="button" class="quiz-opt '+cls+'" data-i="'+i+'" aria-pressed="false">'+esc(o)+'</button>'; });
+      return h + '</div>';
+    }
+    function singleStep(title, list, cls, onPick){
+      body.innerHTML = '<div class="quiz-step"><p class="quiz-q">'+title+'</p>'+optButtons(list, cls)+'</div>';
+      body.querySelectorAll('.'+cls).forEach(function(b){
+        b.addEventListener('click', function(){ onPick(list[parseInt(b.getAttribute('data-i'),10)]); });
+      });
+    }
+    function show(){
+      dots();
+      if(step===0){
+        singleStep("What\u2019s your age range?", ["Under 50","50\u201364","65+"], 'rq-age', function(v){ ans.age=v; window.__tfQuizPartial=ans; step=1; setTimeout(show,160); });
+      } else if(step===1){
+        body.innerHTML = '<div class="quiz-step"><p class="quiz-q">Any of these apply to you?</p><p class="quiz-hint">Select all that apply, then continue.</p>'
+          + optButtons(FACTORS, 'rq-f')
+          + '<button type="button" class="quiz-next" id="rqGo">Continue \u2192</button></div>';
+        var sel = {};
+        body.querySelectorAll('.rq-f').forEach(function(b){
+          b.addEventListener('click', function(){
+            var i = b.getAttribute('data-i');
+            if(sel[i]){ delete sel[i]; b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); }
+            else { sel[i]=1; b.classList.add('selected'); b.setAttribute('aria-pressed','true'); }
+          });
+        });
+        document.getElementById('rqGo').addEventListener('click', function(){
+          ans.factors = Object.keys(sel).map(function(i){ return FACTORS[parseInt(i,10)]; });
+          window.__tfQuizPartial = ans;
+          step=2; show();
+        });
+      } else if(step===2){
+        singleStep("When was your last preventive screening?", ["Never had one","Over 2 years ago","Within the last 2 years"], 'rq-last', function(v){ ans.last=v; window.__tfQuizPartial=ans; step=3; setTimeout(show,160); });
+      } else {
+        result();
+      }
+    }
+    function result(){
+      dots();
+      var score = 0, flags = [];
+      if(ans.age !== "Under 50"){ score++; flags.push("Age 50+"); }
+      ans.factors.forEach(function(f){ score++; flags.push(f); });
+      if(ans.last !== "Within the last 2 years"){ score++; flags.push("No recent screening"); }
+      var head, note;
+      if(score <= 1){
+        head = "Your profile looks lower \u2014 and staying ahead of it is the smart move.";
+        note = "You flagged "+score+" of 6 possible factors. This is exactly when preventive screening pays off most: establishing a baseline while everything looks fine, so you and your doctor can spot changes early.";
+      } else if(score <= 3){
+        head = "Moderate profile \u2014 worth understanding your numbers.";
+        note = "You flagged "+score+" of 6 possible factors. That\u2019s squarely in the zone where a quick preventive screening earns its keep \u2014 turning unknowns into numbers you and your doctor can actually act on.";
+      } else {
+        head = "Higher profile \u2014 this is exactly what preventive screening is for.";
+        note = "You flagged "+score+" of 6 possible factors. The whole point of preventive screening is catching hidden risk factors before symptoms ever show up \u2014 and your answers suggest there\u2019s real value in checking.";
+      }
+      var fh = flags.length ? '<ul class="quiz-factors">'+flags.map(function(f){ return '<li>'+esc(f)+'</li>'; }).join('')+'</ul>' : '';
+      body.innerHTML = '<div class="quiz-step quiz-result">'
+        + '<h4>'+head+'</h4>'
+        + '<p>'+note+'</p>' + fh
+        + '<p><strong>What the screening checks:</strong> a Life Line Screening event uses painless ultrasound and other non-invasive tests to check for hidden risk factors \u2014 carotid artery health (stroke risk), heart rhythm, abdominal aortic aneurysm, peripheral artery disease, and bone density. Every screening is reviewed by a board-certified physician, and you get a clear report to take to your own doctor. It\u2019s designed to help you understand your risk, not to diagnose anything.</p>'
+        + '<a class="cta" href="'+AFF+'" rel="nofollow sponsored noopener">Find a Screening Near You<small>Official site \u2014 check availability</small></a>'
+        + '<button type="button" class="quiz-restart" id="rqRestart">Retake the check</button>'
+        + '</div>';
+      document.getElementById('rqRestart').addEventListener('click', function(){ ans={age:null,factors:[],last:null}; step=0; window.__tfQuizDone=false; window.__tfQuizData=null; window.__tfQuizPartial=null; show(); });
+      var tier = score <= 1 ? "lower" : (score <= 3 ? "moderate" : "higher");
+      if(window.__tfOnQuizComplete) window.__tfOnQuizComplete({ answers: ans, tier: tier });
+    }
+    show();
+  })();
+  </script>
 
 <main class="container">
 
@@ -95,5 +210,198 @@
   <p>Affiliate disclosure: I'm an affiliate for this service. If you book through my link, I may earn a commission at no extra cost to you. I research every offer featured here — this page explains what it is, how it works, and what to know before you decide.</p>
 </footer>
 
+<style>
+/* TradeForge lead capture v1 — matches page branding */
+.tf-msg { font-size: .9rem; margin: .6rem 0 0; min-height: 1.2em; }
+.tf-msg.ok { color: #2e7d32; font-weight: 700; }
+.tf-msg.err { color: #b3261e; }
+.tf-email-row { background: #fffdf6; border: 2px dashed #B8923D; border-radius: .75rem; padding: 1rem 1rem 1.1rem; margin: 1.25rem 0 0; text-align: center; }
+.tf-email-row .tf-email-label { font-weight: 700; color: #1B2A41; margin: 0 0 .7rem !important; font-size: 1rem; }
+.tf-email-form { display: flex; gap: .5rem; }
+.tf-email-input { flex: 1; min-width: 0; padding: .8rem .9rem; border: 2px solid #e8e2d4; border-radius: .6rem; font-size: 1rem; font-family: inherit; color: #1B2A41; }
+.tf-email-input:focus { outline: none; border-color: #B8923D; }
+.tf-email-btn { background: #B8923D; color: #1B2A41; font-weight: 800; border: none; border-radius: .6rem; padding: .8rem 1rem; font-size: .95rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.tf-email-btn:disabled { opacity: .6; cursor: default; }
+@media (max-width: 420px){ .tf-email-form { flex-direction: column; } }
+.tf-exit-overlay { position: fixed; inset: 0; background: rgba(27,42,65,.72); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.25rem; animation: tfFadeIn .25s ease; }
+.tf-exit-overlay[hidden] { display: none; }
+@keyframes tfFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.tf-exit-card { position: relative; background: #F7F4EC; border-radius: 1rem; max-width: 26rem; width: 100%; padding: 2rem 1.5rem 1.5rem; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.35); animation: tfPop .3s ease; }
+@keyframes tfPop { from { transform: scale(.94) translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+.tf-exit-card h3 { color: #1B2A41; font-size: 1.4rem; margin: 0 0 .5rem; line-height: 1.3; }
+.tf-exit-sub { color: #1B2A41; opacity: .75; font-size: .98rem; margin: 0 0 1.1rem; }
+.tf-exit-card form { display: flex; flex-direction: column; gap: .6rem; }
+.tf-exit-card input[type=email] { padding: .85rem 1rem; border: 2px solid #e8e2d4; border-radius: .6rem; font-size: 1rem; font-family: inherit; color: #1B2A41; }
+.tf-exit-card input[type=email]:focus { outline: none; border-color: #B8923D; }
+.tf-exit-card button[type=submit] { background: #B8923D; color: #1B2A41; font-weight: 800; font-size: 1.05rem; border: none; border-radius: .6rem; padding: .9rem; cursor: pointer; font-family: inherit; }
+.tf-exit-card button[type=submit]:disabled { opacity: .6; cursor: default; }
+.tf-exit-skip { background: none; border: none; color: #1B2A41; opacity: .6; font-size: .88rem; text-decoration: underline; cursor: pointer; margin-top: .9rem; font-family: inherit; }
+.tf-exit-close { position: absolute; top: .6rem; right: .8rem; background: none; border: none; font-size: 1.5rem; line-height: 1; color: #1B2A41; opacity: .5; cursor: pointer; padding: .25rem; }
+</style>
+<script>
+/* TradeForge lead capture v1 — exit-intent popup + post-quiz email capture.
+ * DEPLOY NOTE: after `wrangler deploy`, set CAPTURE_URL below to your worker URL
+ * (printed by wrangler, e.g. https://tradeforge-capture.<subdomain>.workers.dev/capture),
+ * then redeploy the bridge site. */
+(function(){
+  "use strict";
+  var CAPTURE_URL = "https://tradeforge-capture.workers.dev/capture"; /* << REPLACE with deployed worker URL */
+  var SLUG = (document.body.getAttribute("data-tf-slug") || "").trim();
+  var LS_KEY = "tf_exit_shown_v1";
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function qd(){ return window.__tfQuizData || {}; }
+  function payload(source, email){
+    var d = qd();
+    return {
+      email: email,
+      product_slug: SLUG,
+      quiz_answers: d.answers || window.__tfQuizPartial || null,
+      quiz_result_tier: d.tier || "",
+      source: source
+    };
+  }
+  function postCapture(p){
+    return fetch(CAPTURE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(p)
+    }).then(function(r){
+      return r.json().catch(function(){ throw new Error("bad_response"); });
+    });
+  }
+  function bindForm(form, input, msgEl, source, onSuccess){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = (input.value || "").trim();
+      if(!EMAIL_RE.test(email)){
+        msgEl.textContent = "Please enter a valid email address.";
+        msgEl.className = "tf-msg err";
+        input.focus();
+        return;
+      }
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      msgEl.textContent = "Sending\u2026";
+      msgEl.className = "tf-msg";
+      postCapture(payload(source, email)).then(function(res){
+        if(res && res.ok){
+          window.__tfEmailCaptured = true;
+          msgEl.className = "tf-msg ok";
+          if(source === "exit_intent"){
+            msgEl.textContent = "Check your inbox \u2014 your report is on its way!";
+            form.style.display = "none";
+            setTimeout(closePopup, 2600);
+          } else {
+            msgEl.textContent = "\u2713 You're in! Check your inbox for your report.";
+            form.style.display = "none";
+          }
+          if(onSuccess) onSuccess();
+        } else {
+          msgEl.textContent = "Something went wrong \u2014 please try again.";
+          msgEl.className = "tf-msg err";
+          btn.disabled = false;
+        }
+      }).catch(function(){
+        msgEl.textContent = "Couldn't reach the server \u2014 please try again.";
+        msgEl.className = "tf-msg err";
+        btn.disabled = false;
+      });
+    });
+  }
+
+  /* ----- post-quiz email row (called by quiz result()) ----- */
+  window.__tfOnQuizComplete = function(data){
+    window.__tfQuizDone = true;
+    window.__tfQuizData = data || {};
+    var card = document.querySelector(".quiz-card .quiz-result");
+    if(card && !document.getElementById("tfEmailRow")){
+      var div = document.createElement("div");
+      div.className = "tf-email-row";
+      div.id = "tfEmailRow";
+      div.innerHTML =
+        '<p class="tf-email-label">Want your personalized results by email?</p>' +
+        '<form class="tf-email-form" novalidate>' +
+        '<input type="email" class="tf-email-input" placeholder="you@example.com" aria-label="Email address" autocomplete="email">' +
+        '<button type="submit" class="tf-email-btn">Send my report</button>' +
+        '</form><p class="tf-msg" role="status"></p>';
+      card.appendChild(div);
+      bindForm(div.querySelector("form"), div.querySelector(".tf-email-input"), div.querySelector(".tf-msg"), "quiz_complete");
+    }
+  };
+
+  /* ----- exit-intent popup ----- */
+  function exitShown(){
+    try { return sessionStorage.getItem(LS_KEY) === "1"; }
+    catch(e){ return window.__tfExitShownFallback === true; }
+  }
+  function markExitShown(){
+    try { sessionStorage.setItem(LS_KEY, "1"); }
+    catch(e){ window.__tfExitShownFallback = true; }
+  }
+  function closePopup(){
+    var ov = document.getElementById("tfExit");
+    if(ov) ov.hidden = true;
+    markExitShown();
+    document.body.style.overflow = "";
+  }
+  function openPopup(){
+    var ov = document.getElementById("tfExit") || buildPopup();
+    markExitShown();
+    ov.hidden = false;
+    document.body.style.overflow = "hidden";
+    var inp = ov.querySelector("input[type=email]");
+    if(inp) setTimeout(function(){ inp.focus(); }, 300);
+  }
+  function maybeShow(){
+    if(window.__tfQuizDone || window.__tfEmailCaptured || exitShown()) return;
+    openPopup();
+  }
+  function buildPopup(){
+    var ov = document.createElement("div");
+    ov.className = "tf-exit-overlay";
+    ov.id = "tfExit";
+    ov.hidden = true;
+    ov.innerHTML =
+      '<div class="tf-exit-card" role="dialog" aria-modal="true" aria-labelledby="tfExitTitle">' +
+      '<button type="button" class="tf-exit-close" aria-label="Close">&times;</button>' +
+      '<h3 id="tfExitTitle">Wait! Your personalized wellness score is almost ready.</h3>' +
+      '<p class="tf-exit-sub">Don&rsquo;t leave empty-handed. Enter your email below, and I will instantly send your custom joint-comfort and health-screening roadmap straight to your inbox for free.</p>' +
+      '<form novalidate>' +
+      '<input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">' +
+      '<button type="submit">Send my free report</button>' +
+      '</form><p class="tf-msg" role="status"></p>' +
+      '<button type="button" class="tf-exit-skip">No thanks, I&rsquo;ll skip</button>' +
+      '</div>';
+    document.body.appendChild(ov);
+    ov.querySelector(".tf-exit-close").addEventListener("click", closePopup);
+    ov.querySelector(".tf-exit-skip").addEventListener("click", closePopup);
+    ov.addEventListener("click", function(e){ if(e.target === ov) closePopup(); });
+    bindForm(ov.querySelector("form"), ov.querySelector("input[type=email]"), ov.querySelector(".tf-msg"), "exit_intent");
+    return ov;
+  }
+  // Desktop: mouse leaves toward the top chrome
+  document.addEventListener("mouseout", function(e){
+    if(!e.relatedTarget && e.clientY <= 0) maybeShow();
+  });
+  // Mobile: tab hidden (app switch / swipe back) — no beforeunload (unreliable)
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") maybeShow();
+  });
+  // Mobile: rapid scroll-up fling (>800px in <500ms)
+  var lastY = window.scrollY || 0, lastT = Date.now();
+  window.addEventListener("scroll", function(){
+    var y = window.scrollY || 0, t = Date.now();
+    if(lastY - y > 800 && t - lastT < 500) maybeShow();
+    lastY = y; lastT = t;
+  }, { passive: true });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      var ov = document.getElementById("tfExit");
+      if(ov && !ov.hidden) closePopup();
+    }
+  });
+})();
+</script>
 </body>
 </html>
