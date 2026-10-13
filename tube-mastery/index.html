@@ -40,7 +40,7 @@
   footer { text-align: center; font-size: .75rem; opacity: .55; padding: 1.5rem 1rem 2rem; }
 </style>
 </head>
-<body>
+<body data-tf-slug="tube-mastery">
 
 <header class="hero">
   <span class="badge">Business pick</span>
@@ -48,6 +48,96 @@
   <p>I went through Matt Par's Tube Mastery &amp; Monetization to see how "faceless" channels really work — niche picking, video systems, and monetization, without ever showing your face. Here's the honest breakdown.</p>
   <a class="cta" href="https://www.digistore24.com/redir/482119/webdesignerdev2f1a9/" rel="nofollow sponsored noopener" style="max-width:22rem;margin:0 auto;">Explore Tube Mastery<small>Official site — secure checkout</small></a>
 </header>
+
+  <style>
+    .quiz-wrap { max-width: 36rem; margin: 0 auto; padding: 0 1.25rem; }
+    .quiz-card { background: #fff; border: 1px solid #e8e2d4; border-radius: 1rem; padding: 1.5rem 1.25rem; margin: 2rem 0; box-shadow: 0 6px 24px rgba(27,42,65,.08); }
+    .quiz-card h3 { font-size: 1.35rem; color: var(--navy); margin: 0 0 .25rem; text-align: center; }
+    .quiz-card .quiz-sub { text-align: center; font-size: .95rem; opacity: .7; margin: 0 0 1rem; }
+    .quiz-progress { display: flex; justify-content: center; gap: .5rem; margin-bottom: 1.25rem; }
+    .quiz-dot { width: .65rem; height: .65rem; border-radius: 999px; background: #e8e2d4; transition: background .25s; }
+    .quiz-dot.active { background: var(--gold); }
+    .quiz-card .quiz-q { font-size: 1.1rem; font-weight: 700; margin: 0 0 1rem; text-align: center; color: var(--navy); }
+    .quiz-opts { display: flex; flex-direction: column; gap: .6rem; }
+    .quiz-opt { display: block; width: 100%; text-align: left; background: var(--cream); border: 2px solid #e8e2d4; border-radius: .65rem; padding: .9rem 1rem; font-size: 1rem; font-weight: 600; color: var(--navy); cursor: pointer; font-family: inherit; transition: border-color .2s, background .2s; }
+    .quiz-opt:hover { border-color: var(--gold); }
+    .quiz-step { animation: quizFade .3s ease; }
+    @keyframes quizFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .quiz-card .quiz-result h4 { font-size: 1.25rem; margin: 0 0 .75rem; color: var(--navy); text-align: center; }
+    .quiz-card .quiz-result p { margin: 0 0 1rem; font-size: 1rem; }
+    .quiz-card .quiz-result .score-line { text-align: center; font-size: 1.05rem; }
+    .quiz-card .quiz-disclaimer { font-size: .78rem; opacity: .6; text-align: center; margin: 1rem 0 0; }
+    .quiz-restart { display: block; margin: .75rem auto 0; font-size: .9rem; color: var(--navy); opacity: .7; background: none; border: none; cursor: pointer; text-decoration: underline; font-family: inherit; }
+  </style>
+  <div class="quiz-wrap">
+    <section class="quiz-card" id="profitQuiz" aria-label="Faceless Channel Profit Potential Test">
+      <h3>Faceless Channel Profit Potential Test</h3>
+      <p class="quiz-sub">3 quick questions &mdash; get your personalized score.</p>
+      <div class="quiz-progress" id="pqProgress"></div>
+      <div id="pqBody"></div>
+      <p class="quiz-disclaimer">Interactive estimate for fun &mdash; not a guarantee of income. Results vary with niche, consistency, and execution.</p>
+    </section>
+  </div>
+  <script>
+  (function(){
+    var AFF = "https://www.digistore24.com/redir/482119/webdesignerdev2f1a9/";
+    var body = document.getElementById('pqBody');
+    var prog = document.getElementById('pqProgress');
+    if(!body || !prog) return;
+    var step = 0;
+    var ans = { hours: null, niche: null, face: null };
+    function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+    function dots(){ var h=""; for(var i=0;i<3;i++) h+='<span class="quiz-dot'+(i<=step?" active":"")+'"></span>'; prog.innerHTML=h; }
+    function singleStep(title, list, onPick){
+      var h = '<div class="quiz-step"><p class="quiz-q">'+title+'</p><div class="quiz-opts">';
+      list.forEach(function(o,i){ h += '<button type="button" class="quiz-opt" data-i="'+i+'">'+esc(o)+'</button>'; });
+      body.innerHTML = h + '</div></div>';
+      body.querySelectorAll('.quiz-opt').forEach(function(b){
+        b.addEventListener('click', function(){ onPick(list[parseInt(b.getAttribute('data-i'),10)]); });
+      });
+    }
+    function show(){
+      dots();
+      if(step===0){
+        singleStep("How many hours per week can you dedicate to an automated side hustle?",
+          ["1-3 hours","4-7 hours","10+ hours"],
+          function(v){ ans.hours=v; window.__tfQuizPartial=ans; step=1; setTimeout(show,160); });
+      } else if(step===1){
+        singleStep("Which content niche interests you most?",
+          ["Finance/Wealth","Travel/Luxury","Health/Facts","Entertainment"],
+          function(v){ ans.niche=v; window.__tfQuizPartial=ans; step=2; setTimeout(show,160); });
+      } else if(step===2){
+        singleStep("Do you prefer showing your face or staying 100% anonymous?",
+          ["Show my face","Stay 100% faceless/anonymous"],
+          function(v){ ans.face=v; window.__tfQuizPartial=ans; step=3; setTimeout(show,160); });
+      } else {
+        result();
+      }
+    }
+    function result(){
+      dots();
+      var faceless = ans.face === "Stay 100% faceless/anonymous";
+      var faceLine = faceless
+        ? "Perfect &mdash; faceless channels are exactly what this system is built for."
+        : "Good news &mdash; the system works with or without showing your face.";
+      body.innerHTML = '<div class="quiz-step quiz-result">'
+        + '<h4>Your Profit Potential Score: 92%</h4>'
+        + '<p class="score-line">Based on your choices, you have a <strong>92% Profit Potential score</strong> for a <strong>100% Faceless Channel</strong>.</p>'
+        + '<p>'+faceLine+'</p>'
+        + '<p>Your pick: <strong>'+esc(ans.niche)+'</strong> &mdash; a proven niche for faceless content. At <strong>'+esc(ans.hours)+'</strong> a week, you can run a lean, system-driven channel without burning out.</p>'
+        + '<p>The best way to launch this week is detailed below...</p>'
+        + '<a class="cta" href="'+AFF+'" rel="nofollow sponsored noopener">Explore Tube Mastery<small>Official site &mdash; secure checkout</small></a>'
+        + '<button type="button" class="quiz-restart" id="pqRestart">Retake the test</button>'
+        + '</div>';
+      document.getElementById('pqRestart').addEventListener('click', function(){
+        ans={hours:null,niche:null,face:null}; step=0;
+        window.__tfQuizDone=false; window.__tfQuizData=null; window.__tfQuizPartial=null; show();
+      });
+      if(window.__tfOnQuizComplete) window.__tfOnQuizComplete({ answers: ans, tier: faceless ? "faceless" : "face" });
+    }
+    show();
+  })();
+  </script>
 
 <main class="container">
 
@@ -102,6 +192,197 @@
 <footer>
   <p>Affiliate disclosure: I'm an affiliate for this product. If you buy through my link, I may earn a commission at no extra cost to you. I research every offer featured here — this page explains what it is, how it works, and what to know before you decide.</p>
 </footer>
+
+
+<style>
+/* TradeForge lead capture v1 — matches page branding */
+.tf-msg { font-size: .9rem; margin: .6rem 0 0; min-height: 1.2em; }
+.tf-msg.ok { color: #2e7d32; font-weight: 700; }
+.tf-msg.err { color: #b3261e; }
+.tf-email-row { background: #fffdf6; border: 2px dashed #B8923D; border-radius: .75rem; padding: 1rem 1rem 1.1rem; margin: 1.25rem 0 0; text-align: center; }
+.tf-email-row .tf-email-label { font-weight: 700; color: #1B2A41; margin: 0 0 .7rem !important; font-size: 1rem; }
+.tf-email-form { display: flex; gap: .5rem; }
+.tf-email-input { flex: 1; min-width: 0; padding: .8rem .9rem; border: 2px solid #e8e2d4; border-radius: .6rem; font-size: 1rem; font-family: inherit; color: #1B2A41; }
+.tf-email-input:focus { outline: none; border-color: #B8923D; }
+.tf-email-btn { background: #B8923D; color: #1B2A41; font-weight: 800; border: none; border-radius: .6rem; padding: .8rem 1rem; font-size: .95rem; cursor: pointer; font-family: inherit; white-space: nowrap; }
+.tf-email-btn:disabled { opacity: .6; cursor: default; }
+@media (max-width: 420px){ .tf-email-form { flex-direction: column; } }
+.tf-exit-overlay { position: fixed; inset: 0; background: rgba(27,42,65,.72); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1.25rem; animation: tfFadeIn .25s ease; }
+.tf-exit-overlay[hidden] { display: none; }
+@keyframes tfFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.tf-exit-card { position: relative; background: #F7F4EC; border-radius: 1rem; max-width: 26rem; width: 100%; padding: 2rem 1.5rem 1.5rem; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.35); animation: tfPop .3s ease; }
+@keyframes tfPop { from { transform: scale(.94) translateY(10px); opacity: 0; } to { transform: none; opacity: 1; } }
+.tf-exit-card h3 { color: #1B2A41; font-size: 1.4rem; margin: 0 0 .5rem; line-height: 1.3; }
+.tf-exit-sub { color: #1B2A41; opacity: .75; font-size: .98rem; margin: 0 0 1.1rem; }
+.tf-exit-card form { display: flex; flex-direction: column; gap: .6rem; }
+.tf-exit-card input[type=email] { padding: .85rem 1rem; border: 2px solid #e8e2d4; border-radius: .6rem; font-size: 1rem; font-family: inherit; color: #1B2A41; }
+.tf-exit-card input[type=email]:focus { outline: none; border-color: #B8923D; }
+.tf-exit-card button[type=submit] { background: #B8923D; color: #1B2A41; font-weight: 800; font-size: 1.05rem; border: none; border-radius: .6rem; padding: .9rem; cursor: pointer; font-family: inherit; }
+.tf-exit-card button[type=submit]:disabled { opacity: .6; cursor: default; }
+.tf-exit-skip { background: none; border: none; color: #1B2A41; opacity: .6; font-size: .88rem; text-decoration: underline; cursor: pointer; margin-top: .9rem; font-family: inherit; }
+.tf-exit-close { position: absolute; top: .6rem; right: .8rem; background: none; border: none; font-size: 1.5rem; line-height: 1; color: #1B2A41; opacity: .5; cursor: pointer; padding: .25rem; }
+</style>
+<script>
+/* TradeForge lead capture v1 — exit-intent popup + post-quiz email capture.
+ * DEPLOY NOTE: after `wrangler deploy`, set CAPTURE_URL below to your worker URL
+ * (printed by wrangler, e.g. https://tradeforge-capture.<subdomain>.workers.dev/capture),
+ * then redeploy the bridge site. */
+(function(){
+  "use strict";
+  var CAPTURE_URL = "https://tradeforge-capture.workers.dev/capture"; /* << REPLACE with deployed worker URL */
+  var SLUG = (document.body.getAttribute("data-tf-slug") || "").trim();
+  var LS_KEY = "tf_exit_shown_v1";
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function qd(){ return window.__tfQuizData || {}; }
+  function payload(source, email){
+    var d = qd();
+    return {
+      email: email,
+      product_slug: SLUG,
+      quiz_answers: d.answers || window.__tfQuizPartial || null,
+      quiz_result_tier: d.tier || "",
+      source: source
+    };
+  }
+  function postCapture(p){
+    return fetch(CAPTURE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(p)
+    }).then(function(r){
+      return r.json().catch(function(){ throw new Error("bad_response"); });
+    });
+  }
+  function bindForm(form, input, msgEl, source){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      var email = (input.value || "").trim();
+      if(!EMAIL_RE.test(email)){
+        msgEl.textContent = "Please enter a valid email address.";
+        msgEl.className = "tf-msg err";
+        input.focus();
+        return;
+      }
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      msgEl.textContent = "Sending\u2026";
+      msgEl.className = "tf-msg";
+      postCapture(payload(source, email)).then(function(res){
+        if(res && res.ok){
+          window.__tfEmailCaptured = true;
+          msgEl.className = "tf-msg ok";
+          if(source === "exit_intent"){
+            msgEl.textContent = "Check your inbox \u2014 your blueprint is on its way!";
+            form.style.display = "none";
+            setTimeout(closePopup, 2600);
+          } else {
+            msgEl.textContent = "\u2713 You're in! Check your inbox for your blueprint.";
+            form.style.display = "none";
+          }
+        } else {
+          msgEl.textContent = "Something went wrong \u2014 please try again.";
+          msgEl.className = "tf-msg err";
+          btn.disabled = false;
+        }
+      }).catch(function(){
+        msgEl.textContent = "Couldn't reach the server \u2014 please try again.";
+        msgEl.className = "tf-msg err";
+        btn.disabled = false;
+      });
+    });
+  }
+
+  /* ----- post-quiz email row (called by quiz result()) ----- */
+  window.__tfOnQuizComplete = function(data){
+    window.__tfQuizDone = true;
+    window.__tfQuizData = data || {};
+    var card = document.querySelector(".quiz-card .quiz-result");
+    if(card && !document.getElementById("tfEmailRow")){
+      var div = document.createElement("div");
+      div.className = "tf-email-row";
+      div.id = "tfEmailRow";
+      div.innerHTML =
+        '<p class="tf-email-label">Want your blueprint by email?</p>' +
+        '<form class="tf-email-form" novalidate>' +
+        '<input type="email" class="tf-email-input" placeholder="you@example.com" aria-label="Email address" autocomplete="email">' +
+        '<button type="submit" class="tf-email-btn">Send my blueprint</button>' +
+        '</form><p class="tf-msg" role="status"></p>';
+      card.appendChild(div);
+      bindForm(div.querySelector("form"), div.querySelector(".tf-email-input"), div.querySelector(".tf-msg"), "quiz_complete");
+    }
+  };
+
+  /* ----- exit-intent popup (Wealth channel copy) ----- */
+  function exitShown(){
+    try { return sessionStorage.getItem(LS_KEY) === "1"; }
+    catch(e){ return window.__tfExitShownFallback === true; }
+  }
+  function markExitShown(){
+    try { sessionStorage.setItem(LS_KEY, "1"); }
+    catch(e){ window.__tfExitShownFallback = true; }
+  }
+  function closePopup(){
+    var ov = document.getElementById("tfExit");
+    if(ov) ov.hidden = true;
+    markExitShown();
+    document.body.style.overflow = "";
+  }
+  function openPopup(){
+    var ov = document.getElementById("tfExit") || buildPopup();
+    markExitShown();
+    ov.hidden = false;
+    document.body.style.overflow = "hidden";
+    var inp = ov.querySelector("input[type=email]");
+    if(inp) setTimeout(function(){ inp.focus(); }, 300);
+  }
+  function maybeShow(){
+    if(window.__tfQuizDone || window.__tfEmailCaptured || exitShown()) return;
+    openPopup();
+  }
+  function buildPopup(){
+    var ov = document.createElement("div");
+    ov.className = "tf-exit-overlay";
+    ov.id = "tfExit";
+    ov.hidden = true;
+    ov.innerHTML =
+      '<div class="tf-exit-card" role="dialog" aria-modal="true" aria-labelledby="tfExitTitle">' +
+      '<button type="button" class="tf-exit-close" aria-label="Close">&times;</button>' +
+      '<h3 id="tfExitTitle">Wait! Don\u2019t leave your passive income blueprint behind.</h3>' +
+      '<p class="tf-exit-sub">Before you close this tab, enter your email below. I\u2019ll send the exact automated system setup guide and trending tools list to your inbox right now.</p>' +
+      '<form novalidate>' +
+      '<input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">' +
+      '<button type="submit">Send my blueprint</button>' +
+      '</form><p class="tf-msg" role="status"></p>' +
+      '<button type="button" class="tf-exit-skip">No thanks, I\u2019ll skip</button>' +
+      '</div>';
+    document.body.appendChild(ov);
+    ov.querySelector(".tf-exit-close").addEventListener("click", closePopup);
+    ov.querySelector(".tf-exit-skip").addEventListener("click", closePopup);
+    ov.addEventListener("click", function(e){ if(e.target === ov) closePopup(); });
+    bindForm(ov.querySelector("form"), ov.querySelector("input[type=email]"), ov.querySelector(".tf-msg"), "exit_intent");
+    return ov;
+  }
+  document.addEventListener("mouseout", function(e){
+    if(!e.relatedTarget && e.clientY <= 0) maybeShow();
+  });
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") maybeShow();
+  });
+  var lastY = window.scrollY || 0, lastT = Date.now();
+  window.addEventListener("scroll", function(){
+    var y = window.scrollY || 0, t = Date.now();
+    if(lastY - y > 800 && t - lastT < 500) maybeShow();
+    lastY = y; lastT = t;
+  }, { passive: true });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      var ov = document.getElementById("tfExit");
+      if(ov && !ov.hidden) closePopup();
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
