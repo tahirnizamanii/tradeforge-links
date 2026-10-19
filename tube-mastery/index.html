@@ -191,6 +191,13 @@
 
 <footer>
   <p>Affiliate disclosure: I'm an affiliate for this product. If you buy through my link, I may earn a commission at no extra cost to you. I research every offer featured here — this page explains what it is, how it works, and what to know before you decide.</p>
+<p class="social-links" style="margin-top:.75rem;">
+    <a href="https://www.youtube.com/@tradeforgestore" target="_blank" rel="noopener">YouTube</a> ·
+    <a href="https://www.tiktok.com/@user9176155720503" target="_blank" rel="noopener">TikTok</a> ·
+    <a href="https://www.instagram.com/tradeforge.store/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.threads.com/@tradeforge.store" target="_blank" rel="noopener">Threads</a> ·
+    <a href="https://www.pinterest.com/webdesignerdev2/" target="_blank" rel="noopener">Pinterest</a>
+  </p>
 </footer>
 
 
@@ -225,11 +232,11 @@
 <script>
 /* TradeForge lead capture v1 — exit-intent popup + post-quiz email capture.
  * DEPLOY NOTE: after `wrangler deploy`, set CAPTURE_URL below to your worker URL
- * (printed by wrangler, e.g. https://tradeforge-capture.<subdomain>.workers.dev/capture),
+ * (printed by wrangler, e.g. https://tradeforge-capture.armstronglucy84.workers.dev/capture),
  * then redeploy the bridge site. */
 (function(){
   "use strict";
-  var CAPTURE_URL = "https://tradeforge-capture.workers.dev/capture"; /* << REPLACE with deployed worker URL */
+  var CAPTURE_URL = "https://tradeforge-capture.armstronglucy84.workers.dev/capture"; /* << REPLACE with deployed worker URL */
   var SLUG = (document.body.getAttribute("data-tf-slug") || "").trim();
   var LS_KEY = "tf_exit_shown_v1";
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
